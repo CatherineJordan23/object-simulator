@@ -1,0 +1,41 @@
+Structs vs Classes
+
+In this assignment, I learned that C structs and Python classes can be used In
+similar ways, but C requires much more work to make them act like objects. In 
+my C program, I had to create the data fields inside the Character struct and 
+then create function pointers for the characters behaviors. I also had to manually
+connect each function pointer to the correct function in the constructor. For 
+example, I set self->attack = character_attack. When calling the functions, I also
+had to explicitly pass the character pointer as the self argument. In Python, 
+classes handle much of this automatically. When i call something like
+character.attack(), Python automatically knows which object is callin the method
+and passes that object as self. Based on my C implementation, I now understand that 
+Python method call is essentially finding the appropriate function for the object 
+and passing the object itself to that function.
+
+Inheritance Implementation
+
+I implemented Inheritance in C by using composition. The Warrior and Mage structs
+each conatin a Character base as their first member. This allows them to conatin
+basic Character infromation while also having their own special information, such
+as strength for the Warrior and mana for tha Mage. I then changed the attack function
+pointer so each tyor could have its own attack behavior. This is different from 
+Python because Python has built-in Inheritance syntax. For example, a Python clas can 
+directly inherit from another class by writing class Warrior(Character): . Python's 
+approach is easier to read and requires less manual setip. It also makes it easier to 
+reuse methods and override them when needed. In C, I had to manually create the 
+relationship between the structs and functions.
+
+Understanding OOp Mechanics
+
+function pointers allow polymorphism because the same function pointer can point 
+to different functions depending on the object. In my program, the base Character has 
+an attack function pointer. A regular Character points to character_attack, while 
+a Warrior points to warrior_attack and a mage points to mage_attack. This means I could 
+store all three types as Character pointers and call characters[i]->attack(characters[i]). 
+Even though the same type of call was made, each character performed a different 
+attack. This assignment helped me understand how object-oriented features can be created 
+manually in C. Systems programmers may use these patterns because C is fast, gives 
+programmers direct control over memory and data, and is widely used for operating 
+Systems and eembedded Systems. function pointers and structs allow programmers to organize 
+with some OOP-like behavior without needing a language with built-in classes. 
